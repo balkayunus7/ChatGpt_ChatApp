@@ -16,8 +16,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final movieUpComingwList = await MovieRepository().getUpComingMovies();
     final movieTopRatedList = await MovieRepository().getTopRatedMovies();
     final moviePopulerList = await MovieRepository().getNewAndPopMovies();
+    final movieNowPlayingList = await MovieRepository().getNowPlayingMovies();
 
     emit(HomeMovieDatasState(
+        movieNowPlayingList: movieNowPlayingList,
         movieUpComingwList: movieUpComingwList,
         movieTopRatedList: movieTopRatedList,
         moviePopulerList: moviePopulerList));

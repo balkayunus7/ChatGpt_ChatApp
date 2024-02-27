@@ -65,26 +65,24 @@ class _HomePageState extends State<HomePage> {
                           subtitle: StringConstants.trendTitle,
                           color: ColorConstants.primaryWhite),
                     ),
-                    const HomeSwiper(),
+                    HomeSwiper(
+                      homeMovieDatasState: homeMovieDatasState,
+                    ),
                     const TitleListviewRow(title: StringConstants.topRated),
-                     CardListView(
-                      imagePath: homeMovieDatasState.movieTopRatedList
-                          .results![0].backdropPath
-                          .toString(),
+                    CardListView(
+                      homeMovieDatasState: homeMovieDatasState,
                     ),
                     const TitleListviewRow(
                       title: StringConstants.populer,
                     ),
-                    const CardListView(
-                      imagePath:
-                          'https://m.media-amazon.com/images/M/MV5BNjMyMDBjMGUtNDUzZi00N2MwLTg1MjItZTk2MDE1OTZmNTYxXkEyXkFqcGdeQXVyMTQ5NjA0NDM0._V1_FMjpg_UX1000_.jpg',
+                    CardListPopulerView(
+                      homeMovieDatasState: homeMovieDatasState,
                     ),
                     const TitleListviewRow(
                       title: StringConstants.onComing,
                     ),
-                    const CardListView(
-                        imagePath:
-                            'https://sm.ign.com/ign_tr/photo/d/dune-part-/dune-part-two-exclusive-new-poster-features-its-stellar-cast_g26d.jpg'),
+                    CardListUpComingView(
+                        homeMovieDatasState: homeMovieDatasState),
                   ],
                 ),
               ),

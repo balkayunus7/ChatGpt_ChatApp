@@ -1,4 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
 import 'package:chatgpt_app/product/constants/color_constants.dart';
 import 'package:chatgpt_app/product/enums/widget_sizes.dart';
 import 'package:flutter/material.dart';
@@ -6,24 +7,27 @@ import 'package:flutter/material.dart';
 class HomeSwiper extends StatelessWidget {
   const HomeSwiper({
     super.key,
+    required this.homeMovieDatasState,
   });
+
+  final HomeMovieDatasState homeMovieDatasState;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 175,
+      height: 200,
       child: Swiper(
         curve: Curves.easeIn,
         itemBuilder: (BuildContext context, int index) {
           return ClipRRect(
             borderRadius: WidgetSizeConstants.borderRadiusNormal,
             child: Image.network(
-              'https://cdn.entries.clios.com/styles/clio_aotw_image_panels_retina/s3/entry_attachments/image/72/2297/22197/123550/ub8REW-EUOXIJDzHkrLiotLY2dSm9j-EOjXCDUbrPYQ.jpeg',
-              fit: BoxFit.cover,
+              'https://image.tmdb.org/t/p/w500${homeMovieDatasState.movieNowPlayingList.results![index].posterPath}',
+              fit: BoxFit.fill,
             ),
           );
         },
-        itemCount: 5,
+        itemCount: 7,
         itemHeight: 400,
         itemWidth: 400,
         viewportFraction: 0.8,

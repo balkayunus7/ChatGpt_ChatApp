@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/models/movieNewPop.dart';
 
 @immutable
@@ -12,8 +11,10 @@ class HomeMovieDatasState extends HomeState {
   final MovieNewPop movieUpComingwList;
   final MovieNewPop movieTopRatedList;
   final MovieNewPop moviePopulerList;
+  final MovieNewPop movieNowPlayingList;
   HomeMovieDatasState(
       {required this.movieUpComingwList,
+      required this.movieNowPlayingList,
       required this.movieTopRatedList,
       required this.moviePopulerList});
 }
