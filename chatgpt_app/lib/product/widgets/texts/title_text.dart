@@ -10,11 +10,11 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      title.toUpperCase(),
-      style: GoogleFonts.bebasNeue(
+      title,
+      style: GoogleFonts.lato(
         color: color,
-        fontSize: 40,
-        fontWeight: FontWeight.w300,
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

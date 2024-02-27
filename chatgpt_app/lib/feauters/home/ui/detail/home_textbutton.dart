@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../product/constants/color_constants.dart';
-import '../../../product/constants/string_constants.dart';
-import '../../../product/widgets/texts/subtitle_text.dart';
+import '../../../../product/constants/color_constants.dart';
+import '../../../../product/constants/string_constants.dart';
+import '../../../../product/widgets/texts/subtitle_text.dart';
 
 class SeeAllWidget extends StatelessWidget {
   const SeeAllWidget({

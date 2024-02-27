@@ -13,7 +13,7 @@ class StringConstants {
 
   // Snack Bar
   static const String hintText = 'Series, Dramas, Action, etc.';
-  static const String trendTitle = 'Now Playing';
+  static const String trendTitle = 'Trending Weeks';
   static const String seeAll = 'See All';
   static const String topRated = 'Top Rated';
 
@@ -21,8 +21,12 @@ class StringConstants {
   static const String populer = 'Populer';
   static const String onComing = 'On Coming ';
   static const String noResult = 'No Results:';
-  static const String authors = 'Authors:  ';
-  static const String publisher = 'Publisher:  ';
+  static const String newAndPopuler = 'New and Populer';
+
+  // New And Populer Detail
+  static const String rememeberMe = 'Remember Me';
+  static const String info = 'Info';
+  static const String releaseDate = 'Release Date : ';
 
   // Errors
   static const String errorLoadingBooks = 'Failed to load books';

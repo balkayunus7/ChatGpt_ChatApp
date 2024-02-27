@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,16 +12,15 @@ class MiniTitle extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 2.2),
       child: Text(subtitle,
-      textAlign: TextAlign.start,
+          textAlign: TextAlign.start,
           style: GoogleFonts.lato(
             color: color,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
           )),
     );
   }
 }
-
 
 class SubtitleText extends StatelessWidget {
   const SubtitleText({required this.subtitle, required this.color, super.key});
@@ -35,7 +33,7 @@ class SubtitleText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 2.2),
       child: Text(subtitle,
-      textAlign: TextAlign.start,
+          textAlign: TextAlign.start,
           style: GoogleFonts.lato(
             color: color,
             fontSize: 15,

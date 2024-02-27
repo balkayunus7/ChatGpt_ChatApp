@@ -9,7 +9,7 @@ class CustomAppBar extends PreferredSize {
     super.key,
     required this.title,
     required this.icon,
-    required this.iconLike,
+    required this.iconSearch,
     required super.preferredSize,
     required super.child,
     required this.onPressed,
@@ -17,7 +17,7 @@ class CustomAppBar extends PreferredSize {
 
   final String title;
   final IconData? icon;
-  final IconData? iconLike;
+  final IconData? iconSearch;
   final VoidCallback onPressed;
   final VoidCallback onPressedBack;
 
@@ -28,7 +28,7 @@ class CustomAppBar extends PreferredSize {
       actions: [
         IconButton(
           iconSize: WidgetSize.iconNormal.value,
-          icon: Icon(iconLike),
+          icon: Icon(iconSearch),
           onPressed: onPressed,
           color: ColorConstants.primaryWhite,
         ),
@@ -44,7 +44,7 @@ class CustomAppBar extends PreferredSize {
       centerTitle: true,
       title: TitleText(
         title: title,
-        color: ColorConstants.primaryRed,
+        color: ColorConstants.primaryWhite,
       ),
       backgroundColor: Colors.transparent,
     );

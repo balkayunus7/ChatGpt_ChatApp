@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kartal/kartal.dart';
-import '../../../product/constants/color_constants.dart';
-import '../../../product/constants/string_constants.dart';
-import '../../../product/enums/widget_sizes.dart';
+import '../../../../product/constants/color_constants.dart';
+import '../../../../product/constants/string_constants.dart';
+import '../../../../product/enums/widget_sizes.dart';
 
 class HomeTexfield extends StatelessWidget {
   const HomeTexfield({
