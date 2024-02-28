@@ -7,6 +7,8 @@ import 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInital()) {
     on<HomeInitalEvent>(homeInitalEvent);
+    on<HomeTopRatedInitalEvent>(homeTopRatedInitalEvent);
+    on<HomeTopRatedDetailEvent>(homeTopRatedDetailEvent);
   }
 
   // Search operations
@@ -23,5 +25,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         movieUpComingwList: movieUpComingwList,
         movieTopRatedList: movieTopRatedList,
         moviePopulerList: moviePopulerList));
+  }
+
+  Future<FutureOr<void>> homeTopRatedInitalEvent(
+      HomeTopRatedInitalEvent event, Emitter<HomeState> emit) async {
+    emit(TopRatedInitial());
+    final movieDetail = await MovieRepository().getTopRatedMovies();
+    emit(HomeMovieAllTopratedState(movieDetail: movieDetail));
+  }
+
+  Future<FutureOr<void>> homeTopRatedDetailEvent(
+      HomeTopRatedDetailEvent event, Emitter<HomeState> emit) async {
+    final movieDetail = await MovieRepository().getAllMovie(event.pageNum);
+    emit(HomeMovieAllTopratedState(movieDetail: movieDetail));
   }
 }

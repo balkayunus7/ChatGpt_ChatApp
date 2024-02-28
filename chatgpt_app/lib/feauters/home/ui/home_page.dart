@@ -2,7 +2,8 @@ import 'package:chatgpt_app/feauters/home/bloc/home_bloc.dart';
 import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
 import 'package:chatgpt_app/product/constants/color_constants.dart';
 import 'package:chatgpt_app/product/constants/string_constants.dart';
-import 'package:chatgpt_app/product/widgets/custom_appbar.dart';
+import 'package:chatgpt_app/product/widgets/loading/custom_appbar.dart';
+import 'package:chatgpt_app/product/widgets/loading/custom_loading_scaffold.dart';
 import 'package:chatgpt_app/product/widgets/texts/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,12 +37,7 @@ class _HomePageState extends State<HomePage> {
         final currentState = state;
         switch (currentState.runtimeType) {
           case HomeInital:
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-
+            return  const LoadingScaffold();
           case HomeMovieDatasState:
             final homeMovieDatasState = currentState as HomeMovieDatasState;
             return Scaffold(

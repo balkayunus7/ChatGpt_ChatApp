@@ -1,12 +1,12 @@
 import 'package:chatgpt_app/feauters/newAndPopuler/bloc/new_bloc.dart';
-import 'package:chatgpt_app/feauters/newAndPopuler/bloc/new_event.dart';
 import 'package:chatgpt_app/feauters/newAndPopuler/bloc/new_state.dart';
 import 'package:chatgpt_app/feauters/newAndPopuler/ui/detail/newAndPopuler_widget.dart';
-import 'package:chatgpt_app/product/widgets/custom_appbar.dart';
+import 'package:chatgpt_app/product/widgets/loading/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../product/constants/string_constants.dart';
+import '../../../product/widgets/loading/custom_loading_scaffold.dart';
+import '../mixin/newAndPopMixin.dart';
 
 class NewAndPopulerPage extends StatefulWidget {
   const NewAndPopulerPage({super.key});
@@ -15,14 +15,8 @@ class NewAndPopulerPage extends StatefulWidget {
   State<NewAndPopulerPage> createState() => _NewAndPopulerPageState();
 }
 
-class _NewAndPopulerPageState extends State<NewAndPopulerPage> {
-  final NewPopBloc newPopBloc = NewPopBloc();
-  @override
-  void initState() {
-    super.initState();
-    newPopBloc.add(NewPopInitalEvent());
-  }
-
+class _NewAndPopulerPageState extends State<NewAndPopulerPage>
+    with NewAndPopMixin {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewPopBloc, NewPopState>(
@@ -32,11 +26,7 @@ class _NewAndPopulerPageState extends State<NewAndPopulerPage> {
         final currentState = state;
         switch (currentState.runtimeType) {
           case NewPopInital:
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return const LoadingScaffold();
           case NewPopMovieState:
             final homeNewPopState = currentState as NewPopMovieState;
             return Scaffold(
@@ -46,8 +36,7 @@ class _NewAndPopulerPageState extends State<NewAndPopulerPage> {
                 icon: null,
                 iconSearch: Icons.search,
                 preferredSize: const Size.fromHeight(kToolbarHeight),
-                onPressed: () {
-                },
+                onPressed: () {},
                 child: const SizedBox.shrink(),
               ),
               body: Expanded(
@@ -55,20 +44,25 @@ class _NewAndPopulerPageState extends State<NewAndPopulerPage> {
                   itemCount: homeNewPopState.moviePopNewList.results!.length,
                   itemBuilder: (context, index) {
                     return NewAndPopulerWidget(
-                      populerImage:
-                          homeNewPopState.moviePopNewList.results![index].backdropPath
-                              .toString(),
+                      populerImage: homeNewPopState
+                          .moviePopNewList.results![index].backdropPath
+                          .toString(),
                       populerTitle: homeNewPopState
                           .moviePopNewList.results![index].title
                           .toString(),
-                      populerDateDay: '07',
+                      populerDateDay: homeNewPopState
+                          .moviePopNewList.results![index].releaseDate
+                          .toString()
+                          .substring(8, 10),
                       populerDescription: homeNewPopState
                           .moviePopNewList.results![index].overview
                           .toString(),
-                      populerDateMonth: 'Mar',
-                      populerDate: homeNewPopState
+                      populerDateMonth: toMonth(homeNewPopState
                           .moviePopNewList.results![index].releaseDate
-                          .toString(),
+                          .toString()
+                          .substring(5, 7)),
+                      populerDate:
+                          "${homeNewPopState.moviePopNewList.results![index].releaseDate.toString().substring(0, 4)} ${toMonth(homeNewPopState.moviePopNewList.results![index].releaseDate.toString().substring(5, 7))} ${homeNewPopState.moviePopNewList.results![index].releaseDate.toString().substring(8, 10)}",
                     );
                   },
                 ),

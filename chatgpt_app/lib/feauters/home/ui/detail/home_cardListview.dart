@@ -2,6 +2,8 @@ import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
+import 'toprated_page.dart';
+
 class CardListView extends StatelessWidget {
   const CardListView({
     super.key,
@@ -17,15 +19,21 @@ class CardListView extends StatelessWidget {
           itemCount: homeMovieDatasState.movieTopRatedList.results!.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: context.padding.low,
-              child: SizedBox(
-                width: 140,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    'https://image.tmdb.org/t/p/w500${homeMovieDatasState.movieTopRatedList.results![index].posterPath}',
-                    fit: BoxFit.cover,
+            return GestureDetector(
+              onTap: () {
+                context.route.navigateToPage(
+                  TopRatedPage());
+              },
+              child: Padding(
+                padding: context.padding.low,
+                child: SizedBox(
+                  width: 140,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w500${homeMovieDatasState.movieTopRatedList.results![index].posterPath}',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -68,8 +76,6 @@ class CardListPopulerView extends StatelessWidget {
   }
 }
 
-
-
 class CardListUpComingView extends StatelessWidget {
   const CardListUpComingView({
     super.key,
@@ -102,5 +108,3 @@ class CardListUpComingView extends StatelessWidget {
     );
   }
 }
-
-

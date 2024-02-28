@@ -1,7 +1,7 @@
 import 'package:chatgpt_app/product/widgets/texts/title_text.dart';
 import 'package:flutter/material.dart';
-import '../constants/color_constants.dart';
-import '../enums/widget_sizes.dart';
+import '../../constants/color_constants.dart';
+import '../../enums/widget_sizes.dart';
 
 class CustomAppBar extends PreferredSize {
   const CustomAppBar({
