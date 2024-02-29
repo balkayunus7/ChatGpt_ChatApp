@@ -2,8 +2,6 @@ import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-import 'toprated_page.dart';
-
 class CardListView extends StatelessWidget {
   const CardListView({
     super.key,
@@ -16,24 +14,18 @@ class CardListView extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.builder(
-          itemCount: homeMovieDatasState.movieTopRatedList.results!.length,
+          itemCount: homeMovieDatasState.movieTopRatedList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                context.route.navigateToPage(
-                  TopRatedPage());
-              },
-              child: Padding(
-                padding: context.padding.low,
-                child: SizedBox(
-                  width: 140,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500${homeMovieDatasState.movieTopRatedList.results![index].posterPath}',
-                      fit: BoxFit.cover,
-                    ),
+            return Padding(
+              padding: context.padding.low,
+              child: SizedBox(
+                width: 140,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    'https://image.tmdb.org/t/p/w500${homeMovieDatasState.movieTopRatedList[index].posterPath}',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -55,7 +47,7 @@ class CardListPopulerView extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.builder(
-          itemCount: homeMovieDatasState.movieTopRatedList.results!.length,
+          itemCount: homeMovieDatasState.moviePopulerList.results!.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
@@ -88,7 +80,7 @@ class CardListUpComingView extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.builder(
-          itemCount: homeMovieDatasState.movieTopRatedList.results!.length,
+          itemCount: homeMovieDatasState.movieUpComingwList.results!.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(

@@ -12,7 +12,7 @@ class NewPopBloc extends Bloc<NewPopEvent, NewPopState> {
   Future<FutureOr<void>> newPopInitalEvent(
       NewPopInitalEvent event, Emitter<NewPopState> emit) async {
     emit(NewPopInital());
-    final moviePopNewList = await MovieRepository().getNewAndPopMovies();
+    final moviePopNewList = await MovieRepository().getNewAndPopMovies(1);
     emit(NewPopMovieState(moviePopNewList: moviePopNewList));
   }
 }

@@ -27,6 +27,7 @@ class StringConstants {
   static const String rememeberMe = 'Remember Me';
   static const String info = 'Info';
   static const String releaseDate = 'Release Date : ';
+  static const String httpException = 'Failed to load data';
 
   // Errors
   static const String errorLoadingBooks = 'Failed to load books';

@@ -1,5 +1,6 @@
 import 'package:chatgpt_app/feauters/home/bloc/home_bloc.dart';
 import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
+import 'package:chatgpt_app/feauters/home/mixin/home_mixin.dart';
 import 'package:chatgpt_app/product/constants/color_constants.dart';
 import 'package:chatgpt_app/product/constants/string_constants.dart';
 import 'package:chatgpt_app/product/widgets/loading/custom_appbar.dart';
@@ -8,7 +9,6 @@ import 'package:chatgpt_app/product/widgets/texts/subtitle_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
-import '../bloc/home_event.dart';
 import 'detail/home_cardListview.dart';
 import 'detail/home_swiper.dart';
 import 'detail/titleListviewRow.dart';
@@ -20,14 +20,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  HomeBloc homeBloc = HomeBloc();
-  @override
-  void initState() {
-    super.initState();
-    homeBloc.add(HomeInitalEvent());
-  }
-
+class _HomePageState extends State<HomePage> with HomeMixin {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
@@ -37,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         final currentState = state;
         switch (currentState.runtimeType) {
           case HomeInital:
-            return  const LoadingScaffold();
+            return const LoadingScaffold();
           case HomeMovieDatasState:
             final homeMovieDatasState = currentState as HomeMovieDatasState;
             return Scaffold(
@@ -54,6 +47,7 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Trending Movies Swiper
                     Padding(
                       padding:
                           context.padding.horizontalNormal.copyWith(bottom: 10),
@@ -64,18 +58,26 @@ class _HomePageState extends State<HomePage> {
                     HomeSwiper(
                       homeMovieDatasState: homeMovieDatasState,
                     ),
-                    const TitleListviewRow(title: StringConstants.topRated),
+                    // Top Rated Movies
+                    TitleListviewRow(
+                      title: StringConstants.topRated,
+                      onPressed: toTopRatedPage,
+                    ),
                     CardListView(
                       homeMovieDatasState: homeMovieDatasState,
                     ),
-                    const TitleListviewRow(
+                    // Populer Movies
+                    TitleListviewRow(
                       title: StringConstants.populer,
+                      onPressed: toPopulerPage,
                     ),
                     CardListPopulerView(
                       homeMovieDatasState: homeMovieDatasState,
                     ),
-                    const TitleListviewRow(
+                    // Upcoming Movies
+                    TitleListviewRow(
                       title: StringConstants.onComing,
+                      onPressed: toUpcomingPage,
                     ),
                     CardListUpComingView(
                         homeMovieDatasState: homeMovieDatasState),

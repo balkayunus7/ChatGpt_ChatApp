@@ -6,12 +6,14 @@ import '../../../../product/widgets/texts/subtitle_text.dart';
 class SeeAllWidget extends StatelessWidget {
   const SeeAllWidget({
     super.key,
+    required this.onPressed,
   });
 
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: const SubtitleText(
           subtitle: StringConstants.seeAll, color: ColorConstants.primaryGrey),
     );

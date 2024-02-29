@@ -6,12 +6,15 @@ import 'feauters/home/ui/navigation_page.dart';
 
 Future<void> main() async {
   await dotenv.load();
-  runApp( BlocProvider(
+  runApp(BlocProvider(
     create: (context) => HomeBloc(),
-    child:  MyApp(),
+    child: const MyApp(),
   ));
 }
+
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ColorScheme.fromSwatch().copyWith(secondary: Colors.deepPurple),
       ),
-      home: NavigaitonPage(),
+      home: const NavigationPage(),
     );
   }
 }

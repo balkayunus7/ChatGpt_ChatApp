@@ -8,8 +8,10 @@ class TitleListviewRow extends StatelessWidget {
   const TitleListviewRow({
     super.key,
     required this.title,
+    required this.onPressed,
   });
   final String title;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,9 @@ class TitleListviewRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MiniTitle(subtitle: title, color: ColorConstants.primaryWhite),
-          const SeeAllWidget()
+          SeeAllWidget(
+            onPressed: onPressed,
+          )
         ],
       ),
     );

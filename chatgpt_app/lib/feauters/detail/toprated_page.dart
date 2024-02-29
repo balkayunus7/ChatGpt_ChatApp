@@ -1,10 +1,10 @@
 import 'package:chatgpt_app/feauters/home/bloc/home_bloc.dart';
 import 'package:chatgpt_app/feauters/home/bloc/home_state.dart';
 import 'package:chatgpt_app/product/widgets/loading/custom_appbar.dart';
+import 'package:chatgpt_app/product/widgets/loading/custom_loading_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/home_event.dart';
+import '../home/bloc/home_event.dart';
 
 class TopRatedPage extends StatefulWidget {
   const TopRatedPage({super.key});
@@ -14,13 +14,32 @@ class TopRatedPage extends StatefulWidget {
 }
 
 class _TopRatedPageState extends State<TopRatedPage> {
+  final ScrollController _scrollController = ScrollController();
+  int pageNum = 1;
+
   @override
   void initState() {
     super.initState();
     homeBloc.add(HomeTopRatedInitalEvent());
+    _scrollController.addListener(_onScroll);
   }
 
-  int pageNum = 1;
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      setState(() {
+        pageNum = pageNum + 1;
+      });
+      homeBloc.add(HomeTopRatedDetailEvent(pageNum: pageNum));
+    }
+  }
+
   final HomeBloc homeBloc = HomeBloc();
   @override
   Widget build(BuildContext context) {
@@ -31,27 +50,17 @@ class _TopRatedPageState extends State<TopRatedPage> {
         final currentState = state;
         switch (currentState.runtimeType) {
           case TopRatedInitial:
-            return Scaffold(
-              appBar: CustomAppBar(
-                  onPressedBack: () {},
-                  title: 'Top Rated'.toUpperCase(),
-                  icon: null,
-                  iconSearch: null,
-                  preferredSize: const Size.fromHeight(kToolbarHeight),
-                  onPressed: () {},
-                  child: const SizedBox.shrink()),
-              body: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return const LoadingScaffold();
           case HomeMovieAllTopratedState:
             final homeMovieAllTopratedState =
                 currentState as HomeMovieAllTopratedState;
             return Scaffold(
               appBar: CustomAppBar(
-                  onPressedBack: () {},
+                  onPressedBack: () {
+                    Navigator.pop(context);
+                  },
                   title: 'Top Rated'.toUpperCase(),
-                  icon: null,
+                  icon: Icons.arrow_back_ios,
                   iconSearch: null,
                   preferredSize: const Size.fromHeight(kToolbarHeight),
                   onPressed: () {},
@@ -60,44 +69,27 @@ class _TopRatedPageState extends State<TopRatedPage> {
                 children: [
                   Expanded(
                     child: GridView.builder(
+                      controller: _scrollController,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4, // İki sütunlu bir grid oluşturur
                         crossAxisSpacing: 5, // Sütunlar arası boşluk
-                        mainAxisSpacing: 5, // Satırlar arası boşluk
+                        mainAxisSpacing: 10, // Satırlar arası boşluk
                         childAspectRatio: 0.7, // Widgetlerin boyut oranı
                       ),
                       itemBuilder: (context, index) {
-                        // Burada her bir grid öğesi için nasıl bir widget oluşturacağınızı tanımlayabilirsiniz
                         return Container(
                           color: Colors.blueGrey,
                           child: Image.network(
-                            'https://image.tmdb.org/t/p/w500${homeMovieAllTopratedState.movieDetail.results![index].posterPath}',
+                            'https://image.tmdb.org/t/p/w500${homeMovieAllTopratedState.movieDetail[index].posterPath}',
                             fit: BoxFit.cover,
                           ),
                         );
                       },
                       itemCount: homeMovieAllTopratedState
-                          .movieDetail.results!.length, // Toplam öğe sayısı
+                          .movieDetail.length, // Toplam öğe sayısı
                     ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 40,
-                        width: MediaQuery.of(context).size.width,
-                        child: ListView.builder(itemCount: 20,itemBuilder: (context, index) {
-                          return TextButton(
-                            onPressed: () {
-                              homeBloc.add(
-                                  HomeTopRatedDetailEvent(pageNum: index + (index + 1)));
-                            },
-                            child: Text((index + 1).toString()),
-                          );
-                        }),
-                      )
-                    ],
-                  )
                 ],
               ),
             );

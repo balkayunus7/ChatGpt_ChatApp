@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import '../../../product/constants/color_constants.dart';
 
-class NavigaitonPage extends StatefulWidget {
-  const NavigaitonPage({super.key});
+class NavigationPage extends StatefulWidget {
+  const NavigationPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _NavigaitonPageState createState() => _NavigaitonPageState();
+  _NavigationPageState createState() => _NavigationPageState();
 }
 
-class _NavigaitonPageState extends State<NavigaitonPage> {
+class _NavigationPageState extends State<NavigationPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
