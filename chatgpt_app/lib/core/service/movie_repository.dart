@@ -24,6 +24,21 @@ class MovieRepository {
     }
   }
 
+  Future<List<Results>> getMovieRandom() async {
+    final response = await http.get(
+      Uri.parse(ApiRequest.trendWeek.url),
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer ${dotenv.env['TOKEN']}',
+      },
+    );
+    if (response.statusCode == 200) {
+      return Movie.fromJson(json.decode(response.body)).results!;
+    } else {
+      throw customServiceException();
+    }
+  }
+
   HttpException customServiceException() =>
       const HttpException(StringConstants.httpException);
 
@@ -61,4 +76,5 @@ class MovieRepository {
       return Movie.fromJson(json);
     }, pageNum);
   }
+
 }

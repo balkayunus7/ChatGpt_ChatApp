@@ -18,7 +18,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   List<Results> allTopRatedMovies = [];
   List<Results> allPopulerMovies = [];
   List<Results> allOnComingMovies = [];
-
+  List allRandomMoviesImage = [];
   Future<void> homeInitalEvent(
       HomeInitalEvent event, Emitter<HomeState> emit) async {
     emit(HomeInital());

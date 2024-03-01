@@ -1,6 +1,6 @@
-import 'package:chatgpt_app/feauters/newAndPopuler/bloc/new_bloc.dart';
-import 'package:chatgpt_app/feauters/newAndPopuler/bloc/new_state.dart';
-import 'package:chatgpt_app/feauters/newAndPopuler/ui/detail/newAndPopuler_widget.dart';
+import 'package:chatgpt_app/feauters/populer/bloc/new_bloc.dart';
+import 'package:chatgpt_app/feauters/populer/bloc/new_state.dart';
+import 'package:chatgpt_app/feauters/populer/ui/detail/newAndPopuler_widget.dart';
 import 'package:chatgpt_app/product/widgets/loading/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

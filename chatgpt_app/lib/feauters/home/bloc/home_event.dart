@@ -27,3 +27,4 @@ class HomeOnComingDetailEvent extends HomeEvent {
   final int pageNum;
   HomeOnComingDetailEvent({required this.pageNum});
 }
+

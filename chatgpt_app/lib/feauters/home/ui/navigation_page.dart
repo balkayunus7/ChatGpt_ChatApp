@@ -1,6 +1,6 @@
 
 import 'package:chatgpt_app/feauters/home/ui/home_page.dart';
-import 'package:chatgpt_app/feauters/newAndPopuler/ui/newAndPopuler_page.dart';
+import 'package:chatgpt_app/feauters/populer/ui/newAndPopuler_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import '../../../product/constants/color_constants.dart';

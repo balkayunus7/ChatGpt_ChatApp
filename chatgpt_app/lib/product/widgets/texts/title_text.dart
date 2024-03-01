@@ -11,7 +11,7 @@ class TitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: GoogleFonts.lato(
+      style: GoogleFonts.anekGurmukhi(
         color: color,
         fontSize: 24,
         fontWeight: FontWeight.w600,

@@ -9,16 +9,13 @@ class MiniTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 2.2),
-      child: Text(subtitle,
-          textAlign: TextAlign.start,
-          style: GoogleFonts.lato(
-            color: color,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          )),
-    );
+    return Text(subtitle,
+        textAlign: TextAlign.start,
+        style: GoogleFonts.anekGurmukhi(
+          color: color,
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ));
   }
 }
 
@@ -34,7 +31,7 @@ class SubtitleText extends StatelessWidget {
       padding: const EdgeInsets.only(top: 2.2),
       child: Text(subtitle,
           textAlign: TextAlign.start,
-          style: GoogleFonts.lato(
+          style: GoogleFonts.anekGurmukhi(
             color: color,
             fontSize: 15,
             fontWeight: FontWeight.bold,
