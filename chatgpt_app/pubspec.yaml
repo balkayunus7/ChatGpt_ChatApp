@@ -19,14 +19,16 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   smooth_page_indicator: ^1.1.0
   animated_text_kit: ^4.2.2
-  
+  shimmer: ^3.0.0
   # State Management
   flutter_bloc: ^8.1.4
   equatable: ^2.0.5
   flutter_dotenv: ^5.1.0
   http: ^1.2.0
-
-
+  get_it: ^7.7.0
+  dartz: ^0.10.1
+  bloc_concurrency: ^0.2.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
