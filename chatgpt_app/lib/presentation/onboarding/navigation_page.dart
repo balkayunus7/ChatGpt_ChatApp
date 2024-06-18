@@ -2,7 +2,7 @@
 import 'package:chatgpt_app/presentation/home/ui/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import '../../product/constants/color_constants.dart';
+import '../product/constants/color_constants.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});

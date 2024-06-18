@@ -1,4 +1,4 @@
-import 'package:chatgpt_app/presentation/home/ui/navigation_page.dart';
+import 'package:chatgpt_app/presentation/onboarding/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

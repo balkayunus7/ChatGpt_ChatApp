@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:chatgpt_app/core/service/movie_repository.dart';
-import 'package:chatgpt_app/application/home/home_bloc/home_state.dart';
+import 'package:chatgpt_app/application/home_bloc/home_state.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,13 +76,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     emit(
       state.copyWith(
-        movieUpComingList: const None(),
+        movieOnComingList: const None(),
       ),
     );
     final upComingMovies = MovieRepository().getUpComingMovies();
     emit(
       state.copyWith(
-        movieUpComingList: await upComingMovies,
+        movieOnComingList: await upComingMovies,
       ),
     );
   }

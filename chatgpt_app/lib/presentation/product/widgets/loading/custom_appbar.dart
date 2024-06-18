@@ -8,10 +8,10 @@ class CustomAppBar extends PreferredSize {
     required this.onPressedBack,
     super.key,
     required this.title,
-    required this.icon,
-    required this.iconSearch,
+    this.icon,
+    this.iconSearch,
     required super.preferredSize,
-    required super.child,
+    super.child = const SizedBox.shrink(),
     required this.onPressed,
   });
 

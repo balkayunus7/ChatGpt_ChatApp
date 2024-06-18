@@ -4,8 +4,8 @@ import '../../../product/constants/color_constants.dart';
 import '../../../product/widgets/texts/subtitle_text.dart';
 import 'home_textbutton.dart';
 
-class TitleListviewRow extends StatelessWidget {
-  const TitleListviewRow({
+class TitleListViewRow extends StatelessWidget {
+  const TitleListViewRow({
     super.key,
     required this.title,
     required this.onPressed,

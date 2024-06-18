@@ -10,8 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+
   # UI
+  cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   kartal: ^3.5.0
   card_swiper: ^3.0.1
@@ -22,12 +23,14 @@ dependencies:
   shimmer: ^3.0.0
   # State Management
   flutter_bloc: ^8.1.4
+  bloc_concurrency: ^0.2.5
+
+  #Core
   equatable: ^2.0.5
   flutter_dotenv: ^5.1.0
   http: ^1.2.0
   get_it: ^7.7.0
   dartz: ^0.10.1
-  bloc_concurrency: ^0.2.5
   
 dev_dependencies:
   flutter_test:
